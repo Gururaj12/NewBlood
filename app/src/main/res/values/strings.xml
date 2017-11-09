@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BloodBank</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+
+    <string-array name="array_name">
+        <item>Blood group</item>
+        <item>A-</item>
+        <item>A+</item>
+        <item>AB-</item>
+        <item>AB+</item>
+        <item>B-</item>
+        <item>B+</item>
+        <item>o-</item>
+        <item>o+</item>
+    </string-array>
+
+</resources>

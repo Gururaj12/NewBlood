@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="15dp"
+    app:cardCornerRadius="15dp"
+
+    android:layout_marginTop="5dp"
+    android:padding="10dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+            <TextView
+                android:gravity="center"
+                android:id="@+id/textViewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Atif Aslam"
+                android:layout_marginLeft="10dp"
+                android:textAlignment="textStart"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColorHint="#000"
+                 />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GENDER : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="male"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-MAIL : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="example@gmail.com"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MOBILE NO : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewcontact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="1234567890"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADDRESS : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="door no/flat no"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CITY : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewcity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ex: hyderabad"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USER NAME : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewusername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="abcd"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BLOOD GROUP : "
+            android:textSize="15dp"
+            android:textColor="#d65145"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textViewblood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="0+"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColorHint="#000"
+            />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
+</android.support.v7.widget.CardView>
+</LinearLayout>
