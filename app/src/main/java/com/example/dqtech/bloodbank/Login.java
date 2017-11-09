@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,8 @@ public class Login extends AppCompatActivity {
     DatabaseReference databaseArtists;
 
     List<Users> userlist;
+
+    private  String userID;
 
     public static final String mypreference = "mypref";
 
@@ -75,7 +80,7 @@ public class Login extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                     id = user.getUid();
+                    /* id = user.getUid();
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
@@ -116,11 +121,10 @@ public class Login extends AppCompatActivity {
                     databaseArtists.child(id).setValue(artist);
 
 
-                    Intent intent = new Intent(Login.this, Home.class);
-                    startActivity(intent);
+
                     //Toast.makeText(getApplicationContext(),"Succesfully signed with :"+user.getEmail()")
                     //Toast.makeText(Login.this,user.getEmail(), Toast.LENGTH_LONG)).show();
-                    Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();*/
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -191,7 +195,85 @@ public class Login extends AppCompatActivity {
                 String userpass=password.getText().toString();
                 if(!usermail.equals("") && !userpass.equals("")){
 
-                    mAuth.signInWithEmailAndPassword(usermail, userpass);
+                //    mAuth.signInWithEmailAndPassword(usermail, userpass);
+
+                    mAuth.signInWithEmailAndPassword(usermail, userpass)
+                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    // If sign in fails, display a message to the user. If sign in succeeds
+                                    // the auth state listener will be notified and logic to handle the
+                                    // signed in user can be handled in the listener.
+                                   // progressBar.setVisibility(View.GONE);
+                                    if (!task.isSuccessful()) {
+                                        // there was an error
+                                        if (password.length() < 6) {
+                                           // inputPassword.setError(getString(R.string.minimum_password));
+                                            Toast.makeText(Login.this, "minimum six character", Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(Login.this,"failed", Toast.LENGTH_LONG).show();
+
+                                            //Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        }
+                                    } else {
+
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        userID = user.getUid();
+
+                                        id = user.getUid();
+
+                                        Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+                                        databaseArtists = FirebaseDatabase.getInstance().getReference("users");
+
+                                        sharedpreferences = getSharedPreferences(mypreference,
+                                                Context.MODE_PRIVATE);
+                                        if (sharedpreferences.contains(USERNAME)) {
+                                            name=sharedpreferences.getString(USERNAME, "");
+                                        }
+                                        if (sharedpreferences.contains(EMAIL)) {
+                                            email1=sharedpreferences.getString(EMAIL, "");
+
+                                        }
+                                        if (sharedpreferences.contains(CONTACT)) {
+                                            contact=sharedpreferences.getString(CONTACT, "");
+                                        }
+                                        if (sharedpreferences.contains(CITY)) {
+                                            city=sharedpreferences.getString(CITY, "");
+
+                                        }
+                                        if (sharedpreferences.contains(BLOOD)) {
+                                            gblood=sharedpreferences.getString(BLOOD, "");
+                                        }
+                                        if (sharedpreferences.contains(ADDRESS)) {
+                                            address=sharedpreferences.getString(ADDRESS, "");
+
+                                        }
+                                        if (sharedpreferences.contains(GENDER)) {
+                                            gender=sharedpreferences.getString(GENDER, "");
+
+                                        }
+
+
+                                        Users artist = new Users( id,name,email1,contact,address,city,gblood,gender);
+
+                                        //Saving the Artist
+                                        databaseArtists.child(id).setValue(artist);
+
+
+
+                                        //Toast.makeText(getApplicationContext(),"Succesfully signed with :"+user.getEmail()")
+                                        //Toast.makeText(Login.this,user.getEmail(), Toast.LENGTH_LONG)).show();
+                                        Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(Login.this, Home.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+                            });
+/*
+                    Intent intent = new Intent(Login.this, Home.class);
+                    startActivity(intent);*/
 
 
                 }
@@ -205,6 +287,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(Login.this,Registration.class);
                 startActivity(intent);
+
             }
         });
      /*   display.setOnClickListener(new View.OnClickListener() {
@@ -215,6 +298,8 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),name,Toast.LENGTH_LONG).show();
             }
         });*/
+
+
 
 
 
