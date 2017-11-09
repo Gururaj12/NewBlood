@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 } else {
                                     Intent intent = new Intent(MainActivity.this, Home.class);
-                                    startActivity(intent);
+                                   startActivity(intent);
                                     finish();
                                 }
                             }

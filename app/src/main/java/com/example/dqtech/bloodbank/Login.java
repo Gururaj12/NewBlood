@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    /* id = user.getUid();
+                     id = user.getUid();
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
@@ -124,7 +124,9 @@ public class Login extends AppCompatActivity {
 
                     //Toast.makeText(getApplicationContext(),"Succesfully signed with :"+user.getEmail()")
                     //Toast.makeText(Login.this,user.getEmail(), Toast.LENGTH_LONG)).show();
-                    Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();*/
+                    Intent intent = new Intent(Login.this, Home.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -197,8 +199,11 @@ public class Login extends AppCompatActivity {
 
                 //    mAuth.signInWithEmailAndPassword(usermail, userpass);
 
-                    mAuth.signInWithEmailAndPassword(usermail, userpass)
-                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                    mAuth.signInWithEmailAndPassword(usermail, userpass);
+
+                    Intent intent = new Intent(Login.this, Home.class);
+                    startActivity(intent);
+                           /* .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     // If sign in fails, display a message to the user. If sign in succeeds
@@ -217,60 +222,17 @@ public class Login extends AppCompatActivity {
                                         }
                                     } else {
 
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        userID = user.getUid();
-
-                                        id = user.getUid();
-
-                                        Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-
-                                        databaseArtists = FirebaseDatabase.getInstance().getReference("users");
-
-                                        sharedpreferences = getSharedPreferences(mypreference,
-                                                Context.MODE_PRIVATE);
-                                        if (sharedpreferences.contains(USERNAME)) {
-                                            name=sharedpreferences.getString(USERNAME, "");
-                                        }
-                                        if (sharedpreferences.contains(EMAIL)) {
-                                            email1=sharedpreferences.getString(EMAIL, "");
-
-                                        }
-                                        if (sharedpreferences.contains(CONTACT)) {
-                                            contact=sharedpreferences.getString(CONTACT, "");
-                                        }
-                                        if (sharedpreferences.contains(CITY)) {
-                                            city=sharedpreferences.getString(CITY, "");
-
-                                        }
-                                        if (sharedpreferences.contains(BLOOD)) {
-                                            gblood=sharedpreferences.getString(BLOOD, "");
-                                        }
-                                        if (sharedpreferences.contains(ADDRESS)) {
-                                            address=sharedpreferences.getString(ADDRESS, "");
-
-                                        }
-                                        if (sharedpreferences.contains(GENDER)) {
-                                            gender=sharedpreferences.getString(GENDER, "");
-
-                                        }
-
-
-                                        Users artist = new Users( id,name,email1,contact,address,city,gblood,gender);
-
-                                        //Saving the Artist
-                                        databaseArtists.child(id).setValue(artist);
-
 
 
                                         //Toast.makeText(getApplicationContext(),"Succesfully signed with :"+user.getEmail()")
                                         //Toast.makeText(Login.this,user.getEmail(), Toast.LENGTH_LONG)).show();
-                                        Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
+                                       // Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(Login.this, Home.class);
                                         startActivity(intent);
                                         finish();
                                     }
                                 }
-                            });
+                            });*/
 /*
                     Intent intent = new Intent(Login.this, Home.class);
                     startActivity(intent);*/

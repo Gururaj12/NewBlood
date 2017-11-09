@@ -21,12 +21,11 @@
         <activity android:name=".ViewDatabase" />
         <activity android:name=".Mydetails" />
         <activity android:name=".Registration" />
-        <activity android:name=".Login" />
         <activity android:name=".Testing" />
         <activity android:name=".Bloodbank" />
-        <activity android:name=".Search"/>
-
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Search" />
+        <activity android:name=".Login"></activity>
+        <activity android:name=".Home" />
     </application>
 
 </manifest>
