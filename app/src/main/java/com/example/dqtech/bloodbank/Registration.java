@@ -150,7 +150,10 @@ public class Registration extends AppCompatActivity {
                                 } else {
                                     add();
                                     shared();
-                                    startActivity(new Intent(Registration.this,Login.class));
+
+
+                                    startActivity(new Intent(Registration.this,MainActivity.class));
+
                                     finish();
                                 }
                             }

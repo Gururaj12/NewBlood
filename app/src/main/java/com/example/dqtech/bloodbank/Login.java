@@ -26,20 +26,20 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
 
-    public static final String TAG="login";
+    public static final String TAG = "login";
 
-    EditText user,password;
-    Button login,registration,display;
+    EditText user, password;
+    Button login, registration, display;
 
     DatabaseReference databaseArtists;
 
     List<Users> userlist;
 
-    private  String userID;
+    private String userID;
 
     public static final String mypreference = "mypref";
 
-  //  public static final String Name = "nameKey";
+    //  public static final String Name = "nameKey";
     public static final String EMAIL = "emailKey";
     public static final String CONTACT = "contactKey";
     public static final String ADDRESS = "addressKey";
@@ -48,12 +48,12 @@ public class Login extends AppCompatActivity {
     public static final String BLOOD = "bloodKey";
     public static final String GENDER = "genderKey";
 
-    String id,name,email1,contact,address,city,gblood,gender;
+    String id, name, email1, contact, address, city, gblood, gender;
 
     SharedPreferences sharedpreferences;
-//hello
+    //hello
     private FirebaseAuth mAuth;
-  //  public static final String mypreference = "mypref";
+    //  public static final String mypreference = "mypref";
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                     id = user.getUid();
+                    id = user.getUid();
 
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
@@ -89,37 +89,36 @@ public class Login extends AppCompatActivity {
                     sharedpreferences = getSharedPreferences(mypreference,
                             Context.MODE_PRIVATE);
                     if (sharedpreferences.contains(USERNAME)) {
-                        name=sharedpreferences.getString(USERNAME, "");
+                        name = sharedpreferences.getString(USERNAME, "");
                     }
                     if (sharedpreferences.contains(EMAIL)) {
-                       email1=sharedpreferences.getString(EMAIL, "");
+                        email1 = sharedpreferences.getString(EMAIL, "");
 
                     }
                     if (sharedpreferences.contains(CONTACT)) {
-                        contact=sharedpreferences.getString(CONTACT, "");
+                        contact = sharedpreferences.getString(CONTACT, "");
                     }
                     if (sharedpreferences.contains(CITY)) {
-                        city=sharedpreferences.getString(CITY, "");
+                        city = sharedpreferences.getString(CITY, "");
 
                     }
                     if (sharedpreferences.contains(BLOOD)) {
-                        gblood=sharedpreferences.getString(BLOOD, "");
+                        gblood = sharedpreferences.getString(BLOOD, "");
                     }
                     if (sharedpreferences.contains(ADDRESS)) {
-                        address=sharedpreferences.getString(ADDRESS, "");
+                        address = sharedpreferences.getString(ADDRESS, "");
 
                     }
                     if (sharedpreferences.contains(GENDER)) {
-                        gender=sharedpreferences.getString(GENDER, "");
+                        gender = sharedpreferences.getString(GENDER, "");
 
                     }
 
 
-                    Users artist = new Users( id,name,email1,contact,address,city,gblood,gender);
+                    Users artist = new Users(id, name, email1, contact, address, city, gblood, gender);
 
                     //Saving the Artist
                     databaseArtists.child(id).setValue(artist);
-
 
 
                     //Toast.makeText(getApplicationContext(),"Succesfully signed with :"+user.getEmail()")
@@ -137,8 +136,9 @@ public class Login extends AppCompatActivity {
         };
     }
 
-    private void add(){
-
+    private void add() {
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
       /*  String user_name=name.getText().toString();
         String usermail=email.getText().toString();
         String usercontact=contact.getText().toString();
@@ -153,8 +153,9 @@ public class Login extends AppCompatActivity {
         String id=user.getUid();
         databaseArtists = FirebaseDatabase.getInstance().getReference();*/
 
+    }
 
-         {
+    {
 
            /* //getting a unique id using push().getKey() method
             //it will create a unique id and we will use it as the Primary Key for our Artist
@@ -186,18 +187,17 @@ public class Login extends AppCompatActivity {
 */
 
 
-        }
-
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String usermail=user.getText().toString();
-                String userpass=password.getText().toString();
-                if(!usermail.equals("") && !userpass.equals("")){
+               // add();
 
-                //    mAuth.signInWithEmailAndPassword(usermail, userpass);
+                String usermail = user.getText().toString();
+                String userpass = password.getText().toString();
+                if (!usermail.equals("") && !userpass.equals("")) {
+
+                    //    mAuth.signInWithEmailAndPassword(usermail, userpass);
 
                     mAuth.signInWithEmailAndPassword(usermail, userpass);
 
@@ -247,7 +247,7 @@ public class Login extends AppCompatActivity {
         registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Login.this,Registration.class);
+                Intent intent = new Intent(Login.this, Registration.class);
                 startActivity(intent);
 
             }
@@ -262,21 +262,16 @@ public class Login extends AppCompatActivity {
         });*/
 
 
-
-
-
-
-
-
-
     }
+
+
     @Override
-    public void onStart() {
+    public void onStart () {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
     @Override
-    public void onStop() {
+    public void onStop () {
         super.onStop();
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
