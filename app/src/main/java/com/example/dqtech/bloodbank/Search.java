@@ -31,10 +31,10 @@ public class Search extends AppCompatActivity {
     Button b1;
 
     //list
-    /*ListView listView;
+    ListView listView;
 
     private ArrayAdapter<String> adapter;
-    private ArrayList<String> arrayList;*/
+    private ArrayList<String> arrayList;
 
 
 
@@ -50,13 +50,13 @@ public class Search extends AppCompatActivity {
 
         //listview
 
-       /* listView= (ListView) findViewById(R.id.list);
+        listView= (ListView) findViewById(R.id.list);
 
         arrayList = new ArrayList<String>();
 
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
 
-         listView.setAdapter(adapter);*/
+         listView.setAdapter(adapter);
 
 
         b1.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +64,7 @@ public class Search extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseReference myRef = database.getReference();
                 String a=editText.getText().toString();
-                Query query = myRef.child("users").orderByChild("name").equalTo(a);
+                Query query = myRef.child("users").orderByChild("city").equalTo(a);
                 //  Query query = myRef.child("users").orderByChild("name").equalTo("varunteja");
                 query.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -80,15 +80,15 @@ public class Search extends AppCompatActivity {
                             String name= (String) messageSnapshot.child("name").getValue();
                             String gender= (String) messageSnapshot.child("gender").getValue();
                             String phone= (String) messageSnapshot.child("contact").getValue();
-                            String city= (String) messageSnapshot.child("city").getValue();
+                            String city= (String) messageSnapshot.child("bgroup").getValue();
                          //listview display
-                          /*  arrayList.add(name);
+                            arrayList.add(name);
                             arrayList.add(gender);
                             arrayList.add(phone);
                             arrayList.add(city);
-*/
-                         //   adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
-                            // String age= (String) messageSnapshot.getValue();
+
+                           adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
+                          //  String age= (String) messageSnapshot.getValue();
 
                             Toast.makeText(Search.this, "found " +name +"", Toast.LENGTH_LONG).show();
                         }

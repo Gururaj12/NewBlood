@@ -1,6 +1,8 @@
 package com.example.dqtech.bloodbank;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,10 +21,28 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity {
-    Button search,bloodbank,mydetails,logout;
+    Button search,bloodbank,mydetails,chat;
     public static final String TAG="login";
 
 
+///////////
+    public static final String mypreference = "mypref";
+
+    //  public static final String Name = "nameKey";
+    public static final String EMAIL = "emailKey";
+    public static final String CONTACT = "contactKey";
+    public static final String ADDRESS = "addressKey";
+    public static final String CITY = "cityKey";
+    public static final String USERNAME = "usernameKey";
+    public static final String BLOOD = "bloodKey";
+    public static final String GENDER = "genderKey";
+    DatabaseReference databaseArtists;
+
+    String id, name, email1, contact, address, city, gblood, gender;
+
+    SharedPreferences sharedpreferences;
+
+////////////
 
 
     //add Firebase Database stuff
@@ -39,7 +60,7 @@ public class Home extends AppCompatActivity {
         search= (Button) findViewById(R.id.search);
         bloodbank= (Button) findViewById(R.id.bb);
         mydetails= (Button) findViewById(R.id.mydetail);
-        logout= (Button) findViewById(R.id.logout);
+        chat= (Button) findViewById(R.id.chat);
 
 
 
@@ -70,7 +91,7 @@ public class Home extends AppCompatActivity {
         };
 
 
-        logout.setOnClickListener(new View.OnClickListener() {
+     /*   logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
@@ -78,7 +99,7 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +108,14 @@ public class Home extends AppCompatActivity {
 
             }
         });
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent s=new Intent(Home.this,Main2Activity.class);
+                startActivity(s);
+            }
+        });
+
 
         bloodbank.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,5 +176,54 @@ public class Home extends AppCompatActivity {
             ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
             mListView.setAdapter(adapter);*/
         }
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        store();
+
+
+    }
+    public void store(){
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
+        String id=currentFirebaseUser.getUid();
+
+        databaseArtists = FirebaseDatabase.getInstance().getReference("users");
+
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+        if (sharedpreferences.contains(USERNAME)) {
+            name = sharedpreferences.getString(USERNAME, "");
+        }
+        if (sharedpreferences.contains(EMAIL)) {
+            email1 = sharedpreferences.getString(EMAIL, "");
+
+        }
+        if (sharedpreferences.contains(CONTACT)) {
+            contact = sharedpreferences.getString(CONTACT, "");
+        }
+        if (sharedpreferences.contains(CITY)) {
+            city = sharedpreferences.getString(CITY, "");
+
+        }
+        if (sharedpreferences.contains(BLOOD)) {
+            gblood = sharedpreferences.getString(BLOOD, "");
+        }
+        if (sharedpreferences.contains(ADDRESS)) {
+            address = sharedpreferences.getString(ADDRESS, "");
+
+        }
+        if (sharedpreferences.contains(GENDER)) {
+            gender = sharedpreferences.getString(GENDER, "");
+
+        }
+
+
+        Users artist = new Users(id, name, email1, contact, address, city, gblood, gender);
+
+        //Saving the Artist
+        databaseArtists.child(id).setValue(artist);
     }
 }

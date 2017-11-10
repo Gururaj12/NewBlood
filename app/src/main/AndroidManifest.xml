@@ -24,8 +24,9 @@
         <activity android:name=".Testing" />
         <activity android:name=".Bloodbank" />
         <activity android:name=".Search" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".Home" />
+        <activity android:name=".Main2Activity"></activity>
     </application>
 
 </manifest>

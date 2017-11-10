@@ -5,26 +5,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/ima"
     android:layout_height="match_parent"
     tools:context="com.example.dqtech.bloodbank.Home">
     <Button
+        android:layout_marginTop="60sp"
         android:id="@+id/search"
         android:text="search"
-    android:layout_width="match_parent"
+        android:background="#000000"
+        android:textColor="#ffffff"
+
+        android:layout_gravity="center"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
     <Button
         android:id="@+id/bb"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center"
         android:text="blood bank"
-        android:layout_width="match_parent"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
+        android:layout_gravity="center"
         android:id="@+id/mydetail"
+        android:layout_marginTop="60dp"
         android:text="mydetails"
-        android:layout_width="match_parent"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
-        android:id="@+id/logout"
-        android:text="logout"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:id="@+id/chat"
+        android:text="Chat room"
+        android:background="#000000"
+        android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
