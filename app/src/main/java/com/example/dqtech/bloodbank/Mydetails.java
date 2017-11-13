@@ -19,10 +19,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.dqtech.bloodbank.MainActivity.GENDER;
 
 /**
  * Created by DQTECH on 10/30/2017.
@@ -31,6 +34,8 @@ import java.util.List;
 public class Mydetails extends AppCompatActivity {
     EditText name, email1, contact, address, city, user12;
     TextView t;
+
+    String id1, name1, email11, contact1, address1, city1, gblood1, gender1;
 
     List<Users> artistList;
     //DatabaseReference databaseReference;
@@ -45,7 +50,7 @@ public class Mydetails extends AppCompatActivity {
     private DatabaseReference myRef;
     private String userID;
 
-   /* public static final String mypreference = "mypref";
+    public static final String mypreference = "mypref";
 
     public static final String Name = "nameKey";
     public static final String EMAIL = "emailKey";
@@ -54,13 +59,17 @@ public class Mydetails extends AppCompatActivity {
     public static final String CITY = "cityKey";
     public static final String USERNAME = "usernameKey";
     public static final String BLOOD = "bloodKey";
-    SharedPreferences sharedpreferences;*/
+    SharedPreferences sharedpreferences;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mydetails);
+//bdshjbgd
+
+
+        //
         listView= (ListView) findViewById(R.id.list);
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -72,7 +81,10 @@ public class Mydetails extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 if (user != null) {
+
+
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     // toastMessage("Successfully signed in with: " + user.getEmail());
@@ -89,7 +101,7 @@ public class Mydetails extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-               showData(dataSnapshot);
+              // showData(dataSnapshot);
 
             }
 
@@ -103,7 +115,7 @@ public class Mydetails extends AppCompatActivity {
     private void showData(DataSnapshot dataSnapshot) {
         for (DataSnapshot ds : dataSnapshot.getChildren()) {
             Users uInfo = new Users();
-//            uInfo.setName(ds.child(userID).getValue(Users.class).getName());
+        uInfo.setName(ds.child(userID).getValue(Users.class).getName());
             uInfo.setGender(ds.child(userID).getValue(Users.class).getGender());//set the name
             uInfo.setEmail(ds.child(userID).getValue(Users.class).getEmail()); //set the email
             uInfo.setContact(ds.child(userID).getValue(Users.class).getContact());
@@ -118,41 +130,7 @@ public class Mydetails extends AppCompatActivity {
             ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
             listView.setAdapter(adapter);
 
-           /* String em=uInfo.getEmail();
-            email1.setText(em);*/
 
-/*
-
-            Users artist = ds.getValue(Users.class);
-            String nam = artist.getName();
-            String email = artist.getEmail();
-            String con = artist.getContact();
-            String add = artist.getAddress();
-            String cit = artist.getCity();
-            String use = artist.getUsername();
-
-
-            email1.setText(email);
-            contact.setText(con);
-            address.setText(add);
-            city.setText(cit);
-            user12.setText(use);*//*
-*/
-/*
-*/
-
-            //set the phone_num
-
-            //display all the information
-            Log.d(TAG, "showData: name: " + uInfo.getName());
-            Log.d(TAG, "showData: email: " + uInfo.getEmail());
-            Log.d(TAG, "showData: phone_num: " + uInfo.getCity());
-           /* ArrayList<String> array  = new ArrayList<>();
-            array.add(uInfo.getName());
-            array.add(uInfo.getEmail());
-            array.add(uInfo.getPhone_num());
-            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
-            mListView.setAdapter(adapter);*//**//**/
         }
     }
     public void onStart() {
@@ -167,6 +145,8 @@ public class Mydetails extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+
+
 }
 
         //   databaseReference= FirebaseDatabase.getInstance().getReference().child("users");

@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String mypreference = "mypref";
 
-    //  public static final String Name = "nameKey";
     public static final String EMAIL = "emailKey";
     public static final String CONTACT = "contactKey";
     public static final String ADDRESS = "addressKey";
@@ -47,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-  //  public static final String PREFS_NAME = "mypref";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,18 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//copied from login
 
         user= (EditText) findViewById(R.id.username);
         password= (EditText) findViewById(R.id.password);
 
-       /* SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-
-    SharedPreferences.Editor editor = settings.edit();*/
 
         auth = FirebaseAuth.getInstance();
 
-       // mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -77,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //store();
+
                 String usermail=user.getText().toString();
                 String userpass=password.getText().toString();
                 if(TextUtils.isEmpty(usermail)){
@@ -104,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                   // store();
 
+                                    store();
                                     Intent intent = new Intent(MainActivity.this, Home.class);
                                    startActivity(intent);
                                     finish();
@@ -167,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Saving the Artist
         databaseArtists.child(id).setValue(artist);
+
     }
 
 

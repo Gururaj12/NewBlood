@@ -1,11 +1,14 @@
 package com.example.dqtech.bloodbank;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -24,10 +28,14 @@ import java.util.ArrayList;
  */
 
 public class ViewDatabase extends AppCompatActivity {
+    EditText et1,et2,et3,et4,et5,et6,et7;
     private static final String TAG = "ViewDatabase";
 
     //add Firebase Database stuff
     private FirebaseDatabase mFirebaseDatabase;
+
+    private FirebaseDatabase database;
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
@@ -35,10 +43,23 @@ public class ViewDatabase extends AppCompatActivity {
 
     private ListView mListView;
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newlay);
+        et1= (EditText) findViewById(R.id.uname);
+        et2= (EditText) findViewById(R.id.uemail);
+        et3= (EditText) findViewById(R.id.ugender);
+        et4= (EditText) findViewById(R.id.ucontact);
+        et5= (EditText) findViewById(R.id.uaddress);
+        et6= (EditText) findViewById(R.id.ucity);
+        et7= (EditText) findViewById(R.id.ublood);
+
+
+
+
 
         mListView = (ListView) findViewById(R.id.listview);
 
@@ -58,6 +79,9 @@ public class ViewDatabase extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     toastMessage("Successfully signed in with: " + user.getEmail());
+
+
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -72,7 +96,8 @@ public class ViewDatabase extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                showData(dataSnapshot);
+
+               showData(dataSnapshot);
             }
 
             @Override
@@ -136,4 +161,7 @@ public class ViewDatabase extends AppCompatActivity {
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+
+
+
 }

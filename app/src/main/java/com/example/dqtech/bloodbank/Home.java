@@ -78,6 +78,7 @@ public class Home extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                  //  store();
                     //Toast.makeText(getApplicationContext(),"Succesfully signed with :"+user.getEmail()")
                     //Toast.makeText(Login.this,user.getEmail(), Toast.LENGTH_LONG)).show();
                     Toast.makeText(getApplicationContext(),user.getEmail(),Toast.LENGTH_LONG).show();
@@ -128,13 +129,15 @@ public class Home extends AppCompatActivity {
         mydetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               // store();
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // This method is called once with the initial value and again
                         // whenever data at this location is updated.
-                       // showData(dataSnapshot);
+                      //  showData(dataSnapshot);
                         Intent s=new Intent(Home.this,ViewDatabase.class);
+                        //view database
                         startActivity(s);
                     }
 
@@ -181,7 +184,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        store();
+     //   store();
 
 
     }
