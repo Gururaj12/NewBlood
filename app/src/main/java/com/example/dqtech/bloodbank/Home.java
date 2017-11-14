@@ -184,10 +184,12 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-     //   store();
+        store();
 
 
     }
+
+
     public void store(){
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
