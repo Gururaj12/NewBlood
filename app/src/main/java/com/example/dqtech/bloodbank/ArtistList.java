@@ -34,7 +34,7 @@ public class ArtistList extends ArrayAdapter<Users> {
         TextView textViewGenre4 = (TextView) listViewItem.findViewById(R.id.textViewcontact);
         TextView textViewName5 = (TextView) listViewItem.findViewById(R.id.textViewaddress);
         TextView textViewGenre6 = (TextView) listViewItem.findViewById(R.id.textViewcity);
-        TextView textViewName7 = (TextView) listViewItem.findViewById(R.id.textViewusername);
+      // TextView textViewName7 = (TextView) listViewItem.findViewById(R.id.textViewusername);
         TextView textViewGenre8 = (TextView) listViewItem.findViewById(R.id.textViewblood);
 
         Users artist = artists.get(position);
@@ -44,7 +44,7 @@ public class ArtistList extends ArrayAdapter<Users> {
         textViewGenre4.setText(artist.getContact());
         textViewName5.setText(artist.getAddress());
         textViewGenre6.setText(artist.getCity());
-        textViewName7.setText(artist.getUsername());
+    //    textViewName7.setText(artist.getUsername());
         textViewGenre8.setText(artist.getBgroup());
 
 

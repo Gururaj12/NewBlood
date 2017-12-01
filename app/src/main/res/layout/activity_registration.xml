@@ -5,9 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2e3237"
-
     android:orientation="vertical"
+    android:background="@drawable/red"
     tools:context="com.example.dqtech.bloodbank.Registration">
 
     <ScrollView
@@ -20,137 +19,132 @@
             android:orientation="vertical">
 
 
-            <EditText
-
-                android:id="@+id/name"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginTop="8dp">
 
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edittext"
-                android:hint="                          name"
-                android:padding="10dp" />
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="#ffffff"
-                android:layout_marginTop="15dp"
-
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <RadioButton
-                    android:id="@+id/male"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="male"
+                    android:hint="name"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+<Spinner
+    android:layout_marginTop="10dp"
+    android:id="@+id/genderspinner"
+    android:entries="@array/gender"
+    android:textColorHint="#FFFFFF"
+    android:background="@drawable/edittext"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-                    android:textSize="20dp" />
+</Spinner>
 
-                <RadioButton
-                    android:id="@+id/female"
-                    android:layout_width="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="female"
-                    android:textSize="20dp" />
-            </RadioGroup>
+                    android:hint="Email"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/email"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:textColorHint="#FFFFFF"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contact"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:hint="email"
-                android:padding="10dp" />
+                android:layout_marginBottom="8dp"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginTop="8dp">
 
-            <EditText
-                android:id="@+id/contact"
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="address"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:hint="contact no"
-                android:padding="10dp" />
+                android:layout_marginBottom="8dp"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginTop="8dp">
 
-            <EditText
-                android:id="@+id/address"
+                <EditText
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="city"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:hint="address"
-                android:padding="10dp" />
+                android:layout_marginBottom="8dp"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginTop="8dp">
 
-            <EditText
-                android:id="@+id/city"
+                <EditText
+                    android:id="@+id/user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="username"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:hint="city"
-                android:padding="10dp" />
+                android:layout_marginBottom="8dp"
+                android:textColorHint="#FFFFFF"
+                android:layout_marginTop="8dp">
 
-            <EditText
-                android:id="@+id/user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:hint="username"
-                android:padding="10dp" />
+                <EditText
+                    android:id="@+id/userpswd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="password"
+                    android:textColor="#FFFFFF"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/userpswd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/edittext"
-                android:hint="password"
-                android:padding="10dp" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="upload image"
-                android:textAllCaps="true"
-                android:textSize="20dp" />
-
-            <ImageView
-                android:visibility="gone"
-                android:id="@+id/image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/edittext"
-                android:padding="10dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <Button
-                android:visibility="gone"
-                android:id="@+id/browse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="browse" />
 
             <Spinner
                 android:id="@+id/bloodgroup"
@@ -162,23 +156,15 @@
                 android:entries="@array/array_name"
                 android:padding="10dp" />
 
-            <CheckBox
-                android:id="@+id/ch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/edittext"
-                android:padding="10dp"
-                android:text="I want to be a donor" />
 
-            <Button
+            <android.support.v7.widget.AppCompatButton
                 android:id="@+id/register"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/edittext"
-                android:padding="10dp"
-                android:text="register" />
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="24dp"
+                android:padding="12dp"
+                android:text="Register" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

@@ -8,9 +8,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,11 +42,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    EditText user,password;
-    Button login,registration;
-    private FirebaseAuth auth;
+
+    private FirebaseAuth mAuth;
+    //  public static final String mypreference = "mypref";
 
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+
+
+
+    EditText user,password;
+    Button login;
+    TextView registration;
+ //   private FirebaseAuth auth;
+
+
 
 
     @Override
@@ -59,51 +71,73 @@ public class MainActivity extends AppCompatActivity {
         password= (EditText) findViewById(R.id.password);
 
 
-        auth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
 
 
 
         login= (Button) findViewById(R.id.log);
-        registration= (Button) findViewById(R.id.reg);
+        registration= (TextView) findViewById(R.id.reg);
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d("", "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d("", "onAuthStateChanged:signed_out");
+                }
+                // ...
+            }
+        };
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String usermail=user.getText().toString();
                 String userpass=password.getText().toString();
-                if(TextUtils.isEmpty(usermail)){
-                    Toast.makeText(getApplicationContext(),"Enter email",Toast.LENGTH_LONG).show();
-                }
-                if(TextUtils.isEmpty(usermail)){
-                    Toast.makeText(getApplicationContext(),"enter password",Toast.LENGTH_LONG).show();
+
+
+                if (TextUtils.isEmpty(usermail)) {
+                    Toast.makeText(getApplicationContext(), "Enter Email!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
-                auth.signInWithEmailAndPassword(usermail, userpass)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
-                                //progressBar.setVisibility(View.GONE);
-                                if (!task.isSuccessful()) {
-                                    // there was an error
-                                    if (password.length() < 6) {
-                                        //inputPassword.setError(getString(R.string.minimum_password));
-                                        Toast.makeText(MainActivity.this,"password should be of 6 letter", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(userpass)) {
+                    Toast.makeText(getApplicationContext(), "Enter Password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                mAuth.signInWithEmailAndPassword(usermail, userpass)
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    // If sign in fails, display a message to the user. If sign in succeeds
+                                    // the auth state listener will be notified and logic to handle the
+                                    // signed in user can be handled in the listener.
+                                    //progressBar.setVisibility(View.GONE);
+                                    if (!task.isSuccessful()) {
+                                        // there was an error
+                                        if (password.length() < 6) {
+                                            //inputPassword.setError(getString(R.string.minimum_password));
+                                            Toast.makeText(MainActivity.this, "password should be of 6 letter", Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_LONG).show();
+                                        }
                                     } else {
-                                        Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_LONG).show();
-                                    }
-                                } else {
 
-                                    store();
-                                    Intent intent = new Intent(MainActivity.this, Home.class);
-                                   startActivity(intent);
-                                    finish();
+                                        //    store();
+                                        Intent intent = new Intent(MainActivity.this, Home.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
-                            }
-                        });
+                            });
+
             }
         });
 
@@ -161,6 +195,18 @@ public class MainActivity extends AppCompatActivity {
         databaseArtists.child(id).setValue(artist);
 
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
+    @Override
+    public void onStop () {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
 
 }

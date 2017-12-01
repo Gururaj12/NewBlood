@@ -39,7 +39,7 @@ public class ListArtist extends ArrayAdapter<Users>{
         TextView tcont= (TextView) listviewitem.findViewById(R.id.textViewcontact);
         TextView taddre= (TextView) listviewitem.findViewById(R.id.textViewaddress);
         TextView tcity= (TextView) listviewitem.findViewById(R.id.textViewcity);
-        TextView tusernam= (TextView) listviewitem.findViewById(R.id.textViewusername);
+       // TextView tusernam= (TextView) listviewitem.findViewById(R.id.textViewusername);
         TextView tblood= (TextView) listviewitem.findViewById(R.id.textViewblood);
         Users artist=artistList.get(position);
         tname.setText(artist.getName());
@@ -48,11 +48,8 @@ public class ListArtist extends ArrayAdapter<Users>{
         tcont.setText(artist.getContact());
         taddre.setText(artist.getAddress());
         tcity.setText(artist.getCity());
-        tusernam.setText(artist.getUsername());
+      //  tusernam.setText(artist.getUsername());
         tblood.setText(artist.getBgroup());
-        Intent  intent=new Intent(context,Mydetails.class);
-        Bundle b=new Bundle();
-        b.putString("name",artist.getName());
 
         return listviewitem;
     }

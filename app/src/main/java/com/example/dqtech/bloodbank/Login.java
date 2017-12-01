@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,7 +30,8 @@ public class Login extends AppCompatActivity {
     public static final String TAG = "login";
 
     EditText user, password;
-    Button login, registration, display;
+    Button login;
+    TextView registration;
 
     DatabaseReference databaseArtists;
 
@@ -65,8 +67,8 @@ public class Login extends AppCompatActivity {
         user = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.log);
-        registration = (Button) findViewById(R.id.reg);
-        display = (Button) findViewById(R.id.display);
+        registration = (TextView) findViewById(R.id.reg);
+      //  display = (Button) findViewById(R.id.display);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -136,55 +138,11 @@ public class Login extends AppCompatActivity {
         };
     }
 
-    private void add() {
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        Toast.makeText(this, "" + currentFirebaseUser.getUid(), Toast.LENGTH_SHORT).show();
-      /*  String user_name=name.getText().toString();
-        String usermail=email.getText().toString();
-        String usercontact=contact.getText().toString();
-        String useraddress=address.getText().toString();
-        String usercity=city.getText().toString();
-        String users=username.getText().toString();
-        //  String userpassword=password.getText().toString();
-        String usermale=male.getText().toString();
-        String userfemale=fenmale.getText().toString();
-        String blood=spinner.getSelectedItem().toString();
-
-        String id=user.getUid();
-        databaseArtists = FirebaseDatabase.getInstance().getReference();*/
-
-    }
 
     {
 
-           /* //getting a unique id using push().getKey() method
-            //it will create a unique id and we will use it as the Primary Key for our Artist
-            String id = databaseArtists.push().getKey();
 
-            //creating an Artist Object
-            Users artist = new Users(id, user_name,usermale,usermail,
-                    usercontact,useraddress,usercity,users,blood);
 
-            //Saving the Artist
-            databaseArtists.child(id).setValue(artist);
-
-            //setting edittext to blank again
-            name.setText("");
-
-            //displaying a success toast
-          *//*  Toast.makeText(this, "Registered", Toast.LENGTH_LONG).show();
-
-            Intent intent=new Intent(getApplicationContext(),Mydetails.class);
-            Bundle b=new Bundle();
-            b.putString("name",user_name);
-            b.putString("email",usermail);
-            b.putString("contact",usercontact);
-            b.putString("address",useraddress);
-            b.putString("city",usercity);
-            b.putString("users",users);
-            b.putString("male",usermale);
-            intent.putExtras(b);*//*
-*/
 
 
         login.setOnClickListener(new View.OnClickListener() {

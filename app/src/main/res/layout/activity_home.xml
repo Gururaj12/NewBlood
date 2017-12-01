@@ -5,46 +5,191 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/ima"
+android:background="@drawable/images"
     android:layout_height="match_parent"
     tools:context="com.example.dqtech.bloodbank.Home">
-    <Button
-        android:layout_marginTop="60sp"
-        android:id="@+id/search"
-        android:text="search"
-        android:background="#000000"
-        android:textColor="#ffffff"
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        android:layout_gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/bb"
-        android:layout_marginTop="60dp"
-        android:layout_gravity="center"
-        android:text="blood bank"
-        android:background="#000000"
-        android:textColor="#ffffff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/mydetail"
-        android:layout_marginTop="60dp"
-        android:text="mydetails"
-        android:background="#000000"
-        android:textColor="#ffffff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:id="@+id/chat"
-        android:text="Chat room"
-        android:background="#000000"
-        android:textColor="#ffffff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:drawableTop="@drawable/search"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:textColor="#000000" />
+
+
+        <Button
+            android:id="@+id/bb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/round_button"
+            android:drawableTop="@drawable/drop"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:textColor="#000000" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:text="Search Blood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginLeft="100dp"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:text="Blood Bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+
+        <Button
+            android:id="@+id/mydetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:drawableTop="@drawable/boss"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+
+            android:textColor="#000000" />
+
+
+        <Button
+            android:id="@+id/chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:drawableTop="@drawable/chat"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+
+            android:layout_marginLeft="50dp"
+            android:textColor="#000000" />
+
+
+
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:text="My details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="120dp"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:text="Chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+
+            <Button
+                android:id="@+id/aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:drawableTop="@drawable/aboutus"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+
+                android:textColor="#000000" />
+
+
+            <Button
+                android:id="@+id/chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:drawableTop="@drawable/chat"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+
+                android:layout_marginLeft="50dp"
+                android:textColor="#000000" />
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:text="About Us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="120dp"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:text="Chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+    </LinearLayout>

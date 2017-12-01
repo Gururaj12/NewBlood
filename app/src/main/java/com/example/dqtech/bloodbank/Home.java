@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -21,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity {
-    Button search,bloodbank,mydetails,chat;
+    Button search,bloodbank,mydetails,chat,logout,aboutus;
     public static final String TAG="login";
 
 
@@ -60,8 +61,9 @@ public class Home extends AppCompatActivity {
         search= (Button) findViewById(R.id.search);
         bloodbank= (Button) findViewById(R.id.bb);
         mydetails= (Button) findViewById(R.id.mydetail);
+        aboutus= (Button) findViewById(R.id.aboutus);
         chat= (Button) findViewById(R.id.chat);
-
+       // logout= (ImageView) findViewById(R.id.out);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -109,14 +111,29 @@ public class Home extends AppCompatActivity {
 
             }
         });
-        chat.setOnClickListener(new View.OnClickListener() {
+        aboutus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home.this,Aboutus.class);
+                startActivity(intent);
+            }
+        });
+     /*   chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent s=new Intent(Home.this,Main2Activity.class);
                 startActivity(s);
             }
-        });
+        });*/
+    /*
 
+
+
+
+
+            }
+        });
+*/
 
         bloodbank.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,24 +146,9 @@ public class Home extends AppCompatActivity {
         mydetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // store();
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-                      //  showData(dataSnapshot);
-                        Intent s=new Intent(Home.this,ViewDatabase.class);
-                        //view database
-                        startActivity(s);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
+               store();
+                Intent s=new Intent(Home.this,ViewDatabase.class);
+                startActivity(s);
 
             }
         });
@@ -166,26 +168,12 @@ public class Home extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),uInfo.getContact(),Toast.LENGTH_LONG);
             Toast.makeText(getApplicationContext(),uInfo.getCity(),Toast.LENGTH_LONG);
 
-            //set the phone_num
-
             //display all the information
             Log.d(TAG, "showData: name: " + uInfo.getName());
             Log.d(TAG, "showData: email: " + uInfo.getEmail());
             Log.d(TAG, "showData: phone_num: " + uInfo.getCity());
-           /* ArrayList<String> array  = new ArrayList<>();
-            array.add(uInfo.getName());
-            array.add(uInfo.getEmail());
-            array.add(uInfo.getPhone_num());
-            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
-            mListView.setAdapter(adapter);*/
+
         }
-
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        store();
-
 
     }
 
@@ -227,8 +215,6 @@ public class Home extends AppCompatActivity {
 
 
         Users artist = new Users(id, name, email1, contact, address, city, gblood, gender);
-
-        //Saving the Artist
         databaseArtists.child(id).setValue(artist);
     }
 }

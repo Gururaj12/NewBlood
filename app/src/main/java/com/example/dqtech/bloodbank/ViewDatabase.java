@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,14 +29,11 @@ import java.util.ArrayList;
  */
 
 public class ViewDatabase extends AppCompatActivity {
-    EditText et1,et2,et3,et4,et5,et6,et7;
+  //  TextView et1,et2,et3,et4,et5,et6,et7;
     private static final String TAG = "ViewDatabase";
 
     //add Firebase Database stuff
     private FirebaseDatabase mFirebaseDatabase;
-
-    private FirebaseDatabase database;
-
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
@@ -49,19 +47,14 @@ public class ViewDatabase extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newlay);
-        et1= (EditText) findViewById(R.id.uname);
-        et2= (EditText) findViewById(R.id.uemail);
-        et3= (EditText) findViewById(R.id.ugender);
-        et4= (EditText) findViewById(R.id.ucontact);
-        et5= (EditText) findViewById(R.id.uaddress);
-        et6= (EditText) findViewById(R.id.ucity);
-        et7= (EditText) findViewById(R.id.ublood);
-
-
-
-
-
-        mListView = (ListView) findViewById(R.id.listview);
+     /*  et1= (TextView) findViewById(R.id.uname);
+        et2= (TextView) findViewById(R.id.uemail);
+        et3= (TextView) findViewById(R.id.ugender);
+        et4= (TextView) findViewById(R.id.ucontact);
+        et5= (TextView) findViewById(R.id.uaddress);
+        et6= (TextView) findViewById(R.id.ucity);
+        et7= (TextView) findViewById(R.id.ublood);*/
+       mListView = (ListView) findViewById(R.id.listview);
 
         //declare the database reference object. This is what we use to access the database.
         //NOTE: Unless you are signed in, this will not be useable.
@@ -71,7 +64,9 @@ public class ViewDatabase extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+
+       mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -91,13 +86,21 @@ public class ViewDatabase extends AppCompatActivity {
             }
         };
 
+        Toast.makeText(getApplicationContext(),userID,Toast.LENGTH_LONG).show();
+
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
 
-               showData(dataSnapshot);
+                Users user= dataSnapshot.getValue(Users.class);
+
+
+
+                Toast.makeText(getApplicationContext(),user.getName(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),user.getCity(),Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewDatabase.this, user.getContact(), Toast.LENGTH_SHORT).show();
+  showData(dataSnapshot);
             }
 
             @Override
@@ -118,7 +121,7 @@ public class ViewDatabase extends AppCompatActivity {
             uInfo.setContact(ds.child(userID).getValue(Users.class).getContact());
             uInfo.setCity(ds.child(userID).getValue(Users.class).getCity());
             uInfo.setBgroup(ds.child(userID).getValue(Users.class).getBgroup());
-            uInfo.setAddress(ds.child(userID).getValue(Users.class).getAddress());//set the phone_num
+            uInfo.setAddress(ds.child(userID).getValue(Users.class).getAddress());///set the phone_num
 
             //display all the information
             Log.d(TAG, "showData: name: " + uInfo.getName());
@@ -133,8 +136,18 @@ public class ViewDatabase extends AppCompatActivity {
             array.add(uInfo.getCity());//email display
            array.add(uInfo.getBgroup());
            array.add(uInfo.getAddress());
+          /*  et1.setText(uInfo.getName());
+            et2.setText(uInfo.getGender());
+            et3.setText(uInfo.getEmail());
+            et4.setText(uInfo.getContact());
+            et5.setText(uInfo.getCity());
+            et6.setText(uInfo.getBgroup());
+            et7.setText(uInfo.getAddress());*/
 
-            ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
+
+            Toast.makeText(this, uInfo.getCity(), Toast.LENGTH_SHORT).show();
+
+        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,array);
             mListView.setAdapter(adapter);
         }
     }
@@ -154,10 +167,7 @@ public class ViewDatabase extends AppCompatActivity {
     }
 
 
-    /**
-     * customizable toast
-     * @param message
-     */
+
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }

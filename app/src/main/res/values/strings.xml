@@ -13,5 +13,13 @@
         <item>o-</item>
         <item>o+</item>
     </string-array>
-
+    <string-array name="gender">
+        <item>Slect gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    
+    <string name="text">Blood Bank is a lifesaving app that helps individuals to find a blood donor.
+        our aim is to make a free and easy to find a blood .Simply it is a blood bank in hand...   </string>
+<string name="text1"> Blood Bank is a user friendly app shaped by individual efforts and developed by company name</string>
 </resources>
